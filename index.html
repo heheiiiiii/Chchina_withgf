@@ -3,390 +3,298 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎪 Our Summer Action-Packed Trip</title>
+    <title>🎀 OUR TRIP PICKER 🎀</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Hopang&family=Pretendard:wght@400;600;800&display=swap');
+
         :root {
-            --bg-paper: #f9f6f0;
-            --text-dark: #2d3142;
-            --accent-sage: #386641;
-            --accent-terracotta: #bc4749;
-            --accent-sand: #f2e8cf;
-            --border-dash: #d3cbb7;
+            --pink-main: #ff758f;
+            --pink-light: #fec5bb;
+            --pink-bg: #fff0f3;
+            --purple-point: #b5179e;
+            --yellow-soft: #f9f871;
+            --text-main: #2b2d42;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Pretendard', sans-serif;
         }
 
         body {
-            background-color: #ede9df;
-            color: var(--text-dark);
-            padding: 40px 20px;
+            background-color: var(--pink-bg);
+            background-image: radial-gradient(#fec5bb 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: var(--text-main);
+            padding: 30px 15px;
             display: flex;
             justify-content: center;
         }
 
-        .diary-binder {
-            max-width: 850px;
+        /* 6공 다이어리 컨셉 바인더 */
+        .diary-container {
+            max-width: 700px;
             width: 100%;
-            background-color: var(--bg-paper);
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            border-left: 18px solid #386641;
+            background: #ffffff;
+            border: 4px solid var(--text-main);
+            border-radius: 24px;
+            padding: 30px 20px;
+            box-shadow: 8px 8px 0px var(--text-main);
             position: relative;
         }
 
         header {
             text-align: center;
-            border-bottom: 2px dashed var(--border-dash);
-            padding-bottom: 30px;
-            margin-bottom: 30px;
-        }
-
-        .tag {
-            display: inline-block;
-            background-color: var(--accent-sand);
-            color: var(--accent-sage);
-            font-weight: 600;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-            border: 1px solid var(--border-dash);
-        }
-
-        h1 {
-            font-size: 2.2rem;
-            color: var(--text-dark);
-            font-weight: 700;
-            letter-spacing: -0.03em;
-        }
-
-        .sub-p {
-            color: #7f8c8d;
-            margin-top: 10px;
-            font-size: 1rem;
-        }
-
-        .tab-container {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 30px;
-            border-bottom: 2px solid var(--border-dash);
-            padding-bottom: 10px;
-            overflow-x: auto;
-        }
-
-        .tab-btn {
-            background: #fff;
-            border: 1px solid var(--border-dash);
-            padding: 12px 20px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 1rem;
-            color: #7f8c8d;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-        }
-
-        .tab-btn:hover {
-            background-color: var(--accent-sand);
-        }
-
-        .tab-btn.active {
-            background-color: var(--accent-sage);
-            color: #fff;
-            border-color: var(--accent-sage);
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        .highlight-box {
-            background-color: #f1ede2;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 35px;
-            border-left: 4px solid var(--accent-terracotta);
-        }
-
-        .highlight-box h3 {
-            color: var(--accent-terracotta);
-            margin-bottom: 8px;
-            font-size: 1.1rem;
-        }
-
-        .highlight-box li {
-            list-style: none;
-            margin-bottom: 4px;
-            font-size: 0.95rem;
-        }
-
-        .day-section {
-            margin-bottom: 45px;
-            border-bottom: 1px dashed var(--border-dash);
-            padding-bottom: 35px;
-        }
-
-        .day-section:last-child {
-            border-bottom: none;
-        }
-
-        .day-title {
-            font-size: 1.3rem;
-            color: var(--accent-sage);
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .day-title span {
-            font-size: 0.85rem;
-            background: var(--accent-sage);
-            color: white;
-            padding: 2px 8px;
-            border-radius: 4px;
-        }
-
-        .img-container {
-            width: 100%;
-            height: 340px;
-            border-radius: 8px;
-            overflow: hidden;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            border: 6px solid white;
-        }
-
-        .img-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .timeline {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .time-node {
-            padding-left: 20px;
+            margin-bottom: 25px;
             position: relative;
         }
 
-        .time-node::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 6px;
-            width: 8px;
-            height: 8px;
-            background-color: var(--accent-terracotta);
-            border-radius: 50%;
-        }
-
-        .time-node strong {
-            color: #4a5759;
-            font-size: 1.05rem;
-            display: block;
-            margin-bottom: 4px;
-        }
-
-        .time-node p {
-            font-size: 0.95rem;
-            color: #555;
-        }
-
-        .landmark-badge {
+        .heart-badge {
             display: inline-block;
-            background-color: #ffeef0;
-            color: var(--accent-terracotta);
-            font-size: 0.8rem;
-            font-weight: bold;
-            padding: 2px 6px;
-            border-radius: 4px;
-            margin-bottom: 4px;
+            background: var(--purple-point);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+            border: 2px solid var(--text-main);
+            transform: rotate(-2deg);
         }
 
-        .rest-box {
-            background-color: #fff;
-            border: 1px dashed var(--accent-sage);
-            padding: 12px 15px;
-            border-radius: 6px;
-            margin-top: 8px;
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--text-main);
+            text-shadow: 2px 2px 0px var(--pink-light);
+        }
+
+        /* 키치 20대 감성 멀티 탭 */
+        .tab-menu {
+            display: flex;
+            gap: 6px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            scrollbar-width: none;
+        }
+        .tab-menu::-webkit-scrollbar { display: none; }
+
+        .tab-btn {
+            background: #fff;
+            border: 3px solid var(--text-main);
+            padding: 10px 16px;
+            border-radius: 14px;
+            cursor: pointer;
+            font-weight: 800;
             font-size: 0.9rem;
-            color: var(--accent-sage);
+            white-space: nowrap;
+            box-shadow: 3px 3px 0px var(--text-main);
+            transition: all 0.1s ease;
+        }
+
+        .tab-btn:hover { transform: translateY(-2px); }
+
+        .tab-btn.active {
+            background: var(--pink-main);
+            color: white;
+            box-shadow: 1px 1px 0px var(--text-main);
+            transform: translate(2px, 2px);
+        }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        /* 카드 및 배지 디자인 */
+        .intro-card {
+            background: #fff0f3;
+            border: 3px solid var(--text-main);
+            border-radius: 16px;
+            padding: 15px;
+            margin-bottom: 25px;
+            box-shadow: 4px 4px 0px var(--pink-light);
+        }
+
+        .intro-card p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            font-weight: 600;
+        }
+
+        .spot-card {
+            border: 3px solid var(--text-main);
+            border-radius: 18px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 5px 5px 0px var(--text-main);
+            background: #fff;
+        }
+
+        .tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+
+        .badge {
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            border: 2px solid var(--text-main);
+        }
+        .bg-otaku { background: #e0aaff; color: #3c096c; } /* 덕후 취저 */
+        .bg-hot { background: #ffadad; color: #9b2226; }   /* 실시간 핫플 */
+        .bg-act { background: #caffbf; color: #1b4332; }   /* 액티비티 */
+
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .desc {
+            font-size: 0.95rem;
+            color: #4a4e69;
+            line-height: 1.5;
+        }
+
+        /* 귀여운 일러스트풍 미니 맵 대체용 그래픽 배경 */
+        .deco-banner {
+            width: 100%;
+            height: 120px;
+            background: linear-gradient(45deg, var(--pink-light), #ffd166);
+            border: 3px solid var(--text-main);
+            border-radius: 14px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            box-shadow: inset 0 0 20px rgba(255,255,255,0.5);
         }
     </style>
 </head>
 <body>
 
-<div class="diary-binder">
+<div class="diary-container">
     <header>
-        <div class="tag">압도적 볼거리 + 똑똑한 피서 밸런스 루트</div>
-        <h1>우리 여름 중국 여행 후보지 고르기! 🇨🇳</h1>
-        <p class="sub-p">지난 여행의 아쉬움은 끝! 하루 종일 눈이 즐거운 메가 랜드마크 대방출</p>
+        <div class="heart-badge">✨ NEXT TRIP PICKER ✨</div>
+        <h1>우리 여름 중국여행 어디 갈까? 💖</h1>
     </header>
 
-    <!-- 탭 메뉴 버튼 -->
-    <div class="tab-container">
-        <button class="tab-btn active" onclick="openTab(event, 'course1')">🌊 1. 상하이+수저우 (야경/운하 끝판왕)</button>
-        <button class="tab-btn" onclick="openTab(event, 'course2')">🏯 2. 베이징+핑야오 (진짜 자금성/고성)</button>
+    <!-- 후보지 5개 탭 버튼 -->
+    <div class="tab-menu">
+        <button class="tab-btn active" onclick="openTab(event, 'opt1')">🏙️ 1. 상하이+수저우</button>
+        <button class="tab-btn" onclick="openTab(event, 'opt2')">🏮 2. 항저우+시안</button>
+        <button class="tab-btn" onclick="openTab(event, 'opt3')">🐼 3. 청두+충칭</button>
+        <button class="tab-btn" onclick="openTab(event, 'opt4')">🍦 4. 창샤+장자제</button>
+        <button class="tab-btn" onclick="openTab(event, 'opt5')">🏯 5. 베이징+낙양</button>
     </div>
 
-    <!-- 💡 코스 1: 상하이 + 수저우 -->
-    <div id="course1" class="tab-content active">
-        <div class="highlight-box">
-            <h3>🗺️ 상하이 + 수저우 하이라이트</h3>
-            <li>• 볼거리 밀도 최상! 화려한 초고층 마천루와 800년 된 진짜 운하 야경의 완벽한 대비</li>
-            <li>• 한낮에는 글로벌 최고 수준의 대형 복합 쇼핑몰과 감성 소품샵에서 시원하게 에어컨 피서</li>
+    <!-- 💡 Option 1. 상하이 + 수저우 -->
+    <div id="opt1" class="tab-content active">
+        <div class="intro-card">
+            <p>🧁 <strong>한줄요약:</strong> 화려한 메가시티 야경과 틱톡 핫플, 그리고 오덕 소품숍 투어까지 단 한 장도 버릴 게 없는 갓벽 밸런스 루트!</p>
         </div>
-
-        <div class="day-section">
-            <div class="day-title"><span>DAY 1</span> 대륙 스케일 야경의 정점</div>
-            <div class="img-container">
-                <img src="https://images.unsplash.com/photo-1543157145-f78c636d023d?auto=format&fit=crop&w=800&q=80" alt="상하이 와이탄 야경">
-            </div>
-            <div class="timeline">
-                <div class="time-node">
-                    <span class="landmark-badge">메가 랜드마크 1</span>
-                    <strong>와이탄(The Bund) & 동방명주 푸동 마천루</strong>
-                    <p>황포강을 사이에 두고 펼쳐지는 100년 전 유럽풍 석조 건축물들과 SF 영화 같은 초고층 빌딩 숲의 야경 레이저 쇼 관람.</p>
-                </div>
-                <div class="rest-box">
-                    ☕ <strong>피서 & 다꾸 타임:</strong> 강변이 한눈에 보이는 통창 카페에서 시원하게 첫날 스크랩북 정리하기.
-                </div>
-            </div>
+        <div class="deco-banner">🏙️✨🎨</div>
+        
+        <div class="spot-card">
+            <div class="tag-row"><span class="badge bg-otaku">마도조사/천관사복 굿즈깡</span><span class="badge bg-hot">인생샷 핫플</span></div>
+            <h3>백롄 오각장 & 인민광장 애니메이트</h3>
+            <p class="desc">중국 MZ 오타쿠들의 성지! 묵향동후(마도조사/천관사복 작가) 공식 라이선스 굿즈 코너가 도배되어 있음. 아크릴 스탠드, 키링, 공식 일러스트북 등 눈 돌아가는 라인업!</p>
         </div>
-
-        <div class="day-section">
-            <div class="day-title"><span>DAY 2</span> 세계 최고 수준의 예술구와 트렌디 쇼핑</div>
-            <div class="img-container">
-                <img src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=800&q=80" alt="상하이 신천지">
-            </div>
-            <div class="timeline">
-                <div class="time-node">
-                    <span class="landmark-badge">메가 랜드마크 2</span>
-                    <strong>대한민국 임시정부 청사 & 신천지(Xintiandi)</strong>
-                    <p>역사적 의미가 깊은 청사를 깊이 있게 관람한 후, 상하이에서 가장 세련된 유럽풍 노천 상점가인 신천지에서 화려한 볼거리와 쇼핑 즐기기.</p>
-                </div>
-                <div class="time-node">
-                    <span class="landmark-badge">메가 랜드마크 3</span>
-                    <strong>예원(Yu Garden) 밤 산책</strong>
-                    <p>낮에는 더우니 패스! 밤이 되면 명나라 양식의 상점가 전체가 황금빛 조명으로 불타오르는 화려한 야경 감상.</p>
-                </div>
-                <div class="rest-box">
-                    🛍️ <strong>쇼핑 & 휴식:</strong> 프랑스 조계지(우캉루)의 청량한 나무 그늘 아래 소품샵들을 돌며 마스킹 테이프 겟!
-                </div>
-            </div>
+        <div class="spot-card">
+            <div class="tag-row"><span class="badge bg-hot">실시간 트렌드</span></div>
+            <h3>안푸루 & 무캉맨션 카페거리</h3>
+            <p class="desc">지금 상하이에서 가장 예쁘고 힙한 20대들이 모이는 동네. 플라타너스 가로수길 아래 힙한 편집숍과 독립 문구점 털고 인생샷 남기기 딱 좋음.</p>
         </div>
-
-        <div class="day-section">
-            <div class="day-title"><span>DAY 3</span> 고속열차 타고 진짜 물의 도시로</div>
-            <div class="img-container">
-                <img src="https://images.unsplash.com/photo-1528642463367-88e046d482e9?auto=format&fit=crop&w=800&q=80" alt="수저우 산탕지에">
-            </div>
-            <div class="timeline">
-                <div class="time-node">
-                    <span class="landmark-badge">메가 랜드마크 4</span>
-                    <strong>세계문화유산 '졸정원' & 수저우 박물관</strong>
-                    <p>명나라 관료가 지은 진짜 거대한 동양 정원의 극치를 감상한 후, 세계적 건축가 '이오 밍 페이'가 디자인한 기하학적 박물관 인테리어 관람 (아트숍 굿즈 퀄리티 최상).</p>
-                </div>
-                <div class="time-node">
-                    <span class="landmark-badge">메가 랜드마크 5</span>
-                    <strong>홍등이 일제히 켜지는 '산탕지에' 운하</strong>
-                    <p>인위적인 세트장이 아닙니다! 수백 년 된 실제 수향 마을 물길을 따라 붉은 홍등이 켜지면 나룻배를 타고 리얼 야경 속으로 들어갑니다.</p>
-                </div>
-                <div class="rest-box">
-                    🎨 <strong>피서 & 다꾸 타임:</strong> 창문 바로 아래로 나룻배가 지나가는 핑장루 수향 카페에서 에어컨 바람 쐬며 다이어리 타임.
-                </div>
-            </div>
+        <div class="spot-card">
+            <div class="tag-row"><span class="badge bg-act">스릴 액티비티</span></div>
+            <h3>황포강 '캡슐 크루즈' & 금무대행 88층 스카이워크</h3>
+            <p class="desc">초호화 레이저 야경 속을 달리는 크루즈 액티비티! 스릴을 원한다면 88층 빌딩 외벽 유리판 위를 안전줄 하나에 의지해 걷는 아찔한 하늘 산책 도전 가능!</p>
         </div>
     </div>
 
-    <!-- 💡 코스 2: 베이징 + 핑야오 -->
-    <div id="course2" class="tab-content">
-        <div class="highlight-box">
-            <h3>🗺️ 베이징 + 핑야오 하이라이트</h3>
-            <li>• 대륙의 상징인 거대한 궁궐과 세계 고대 성벽 유산을 정면으로 돌파하는 코스</li>
-            <li>• 습도가 낮아 남쪽보다 쾌적하며, 궁궐과 성벽의 웅장함 덕분에 볼거리가 쉴 새 없이 몰아침</li>
+    <!-- 💡 Option 2. 항저우 + 시안 -->
+    <div id="opt2" class="tab-content">
+        <div class="intro-card">
+            <p>🦊 <strong>한줄요약:</strong> <천관사복> 속 태자 전하와 화청의 정취를 온몸으로 느끼는 리얼 동양풍 과몰입 성지순례 루트!</p>
         </div>
+        <div class="deco-banner">🏮🦊🌸</div>
 
-        <div class="day-section">
-            <div class="day-title"><span>DAY 1</span> 압도적인 대륙의 심장부</div>
-            <div class="img-container">
-                <img src="https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?auto=format&fit=crop&w=800&q=80" alt="베이징 자금성">
-            </div>
-            <div class="timeline">
-                <div class="time-node">
-                    <span class="landmark-badge">메가 랜드마크 1</span>
-                    <strong>천안문 광장 & 진짜 자금성(고궁박물원)</strong>
-                    <p>가짜 세트장과는 크기부터 비교 불가. 무려 9천 개가 넘는 방이 있는 세계 최대 규모의 진짜 황궁 내부를 걸으며 압도적인 스케일 체감.</p>
-                </div>
-                <div class="time-node">
-                    <span class="landmark-badge">메가 랜드마크 2</span>
-                    <strong>경산공원(Jingshan Park) 정상</strong>
-                    <p>자금성 바로 뒤 야트막한 황실 정원 정상에 올라, 거대한 자금성의 노란 기와지붕 바다를 한눈에 내려다보는 역사적 장관.</p>
-                </div>
-                <div class="rest-box">
-                    ☕ <strong>피서 & 휴식:</strong> 황실 정원을 본 후 베이징의 오래된 기와 골목 '후통'의 힙한 카페에서 시원하게 에어컨 충전!
-                </div>
-            </div>
+        <div class="spot-card">
+            <div class="tag-row"><span class="badge bg-otaku">천관사복 씹어먹기</span><span class="badge bg-hot">리얼 배경지</span></div>
+            <h3>항저우 서호 (서호십경)</h3>
+            <p class="desc"><천관사복> 애니메이션 속 물안개 핀 수묵화 비주얼의 모티브가 된 진짜 호수. 한밤중에 붉은 홍등이 켜진 나룻배를 타면 화청이 마중 나올 것 같은 리얼 과몰입 쌉가능.</p>
         </div>
-
-        <div class="day-section">
-            <div class="day-title"><span>DAY 2</span> 세계 문명의 불가사의와 모던 아트</div>
-            <div class="img-container">
-                <img src="https://images.unsplash.com/photo-1508609349937-564bb3644202?auto=format&fit=crop&w=800&q=80" alt="만리장성">
-            </div>
-            <div class="timeline">
-                <div class="time-node">
-                    <span class="landmark-badge">메가 랜드마크 3</span>
-                    <strong>만리장성 (팔달령 또는 모전욕 장성)</strong>
-                    <p>케이블카를 타고 편하게 올라가 산맥을 따라 끝없이 뻗어 있는 인류 최대의 건축물을 직접 두 발로 디디기.</p>
-                </div>
-                <div class="time-node">
-                    <span class="landmark-badge">메가 랜드마크 4</span>
-                    <strong>798 예술구 (798 Art Zone)</strong>
-                    <p>냉전 시대 무기 공장 단지를 거대한 현대 미술 갤러리 거리로 탈바꿈한 곳. 엄청난 크기의 야외 조형물들과 개성 넘치는 디자인 소품샵 천국.</p>
-                </div>
-                <div class="rest-box">
-                    🎨 <strong>다꾸 타임:</strong> 798 예술구 내 인더스트리얼 감성 공장 개조 카페에서 오늘 모은 만리장성 티켓 스크랩하기.
-                </div>
-            </div>
+        <div class="spot-card">
+            <div class="tag-row"><span class="badge bg-act">역대급 액티비티</span><span class="badge bg-hot">과몰입 코스프레</span></div>
+            <h3>시안 대당불야성 한복/한푸 체험</h3>
+            <p class="desc">요즘 중국 20대들 사이에서 메가 히트 친 액티비티! 화려한 당나라 메이크업과 고전 의상을 풀세팅하고 번화가를 걸으며 밤새도록 이어지는 실시간 야외 공연 즐기기!</p>
         </div>
+    </div>
 
-        <div class="day-section">
-            <div class="day-title"><span>DAY 3</span> 대륙 낭만 기차 여행 & 청나라 고성 입성</div>
-            <div class="img-container">
-                <img src="https://images.unsplash.com/photo-1555543166-74dbb8a06f3e?auto=format&fit=crop&w=800&q=80" alt="핑야오 고성">
-            </div>
-            <div class="timeline">
-                <div class="time-node">
-                    <strong>오전: 베이징 ➡️ 핑야오 고성 고속열차 대장정 (약 3~4시간)</strong>
-                    <p>창밖으로 끊임없이 펼쳐지는 대륙의 대자연을 감상하며 쾌적하게 기차 여행 즐기기.</p>
-                </div>
-                <div class="time-node">
-                    <span class="landmark-badge">메가 랜드마크 5</span>
-                    <strong>세계문화유산 '핑야오 고성' 성벽 투어</strong>
-                    <p>도시 전체를 둘러싼 거대한 고대 성벽 위를 걸으며, 성 내부에 가득 찬 진짜 청나라 기와집 서민들의 삶을 내려다보는 완전히 새로운 볼거리.</p>
-                </div>
-                <div class="rest-box">
-                    🛍️ <strong>문구 쇼핑:</strong> 고성 안 전통 문방구에서만 파는 고전 스타일 수제 다이어리와 먹각 도장 샵 구경하기.
-                </div>
-            </div>
+    <!-- 💡 Option 3. 청두 + 충칭 -->
+    <div id="opt3" class="tab-content">
+        <div class="intro-card">
+            <p>🐼 <strong>한줄요약:</strong> 귀여운 판다와 사이버펑크 틱톡 1위 도시의 만남! 액티비티와 핫플의 끝판왕 루트.</p>
+        </div>
+        <div class="deco-banner">🐼🏙️🌶️</div>
+
+        <div class="spot-card">
+            <div class="tag-row"><span class="badge bg-hot">귀여움 한도초과</span></div>
+            <h3>청두 판다 번식 연구 기지</h3>
+            <p class="desc">요즘 전 세계 20대들이 줄 서서 가는 0순위 핫플! 굴러다니는 아기 판다들을 실물로 영접하고, 세상에서 가장 귀여운 판다 특화 소품샵에서 다꾸용 스티커와 인형 쓸어담기.</p>
+        </div>
+        <div class="spot-card">
+            <div class="tag-row"><span class="badge bg-act">사이버펑크 액티비티</span></div>
+            <h3>충칭 홍야동 & 리지바 경전철</h3>
+            <p class="desc">센과 치히로 실사판으로 유명한 절벽 위 황금빛 궁궐! 아파트 한가운데를 뚫고 지나가는 경전철 안에서 도심을 가로지르는 독특한 스릴 액티비티를 체험할 수 있음.</p>
+        </div>
+    </div>
+
+    <!-- 💡 Option 4. 창샤 + 장자제 -->
+    <div id="opt4" class="tab-content">
+        <div class="intro-card">
+            <p>🍦 <strong>한줄요약:</strong> 트렌디한 먹방 핫플 도시와 아바타의 배경이 된 신비로운 대자연 액티비티의 꿀조합!</p>
+        </div>
+        <div class="deco-banner">🍦⛰️🧗‍♀️</div>
+
+        <div class="spot-card">
+            <div class="tag-row"><span class="badge bg-hot">Z세대 밀크티 성지</span></div>
+            <h3>창샤 황싱루 보행가 & 차옌위에스</h3>
+            <p class="desc">중국 20대들이 오직 '이 밀크티'를 마시러 여행 온다는 전설의 핫플. 밤마다 화려한 네온사인이 번쩍이는 거리에서 로컬 푸드 투어와 트렌디한 쇼핑 즐기기.</p>
+        </div>
+        <div class="spot-card">
+            <div class="tag-row"><span class="badge bg-act">도파민 폭발 액티비티</span></div>
+            <h3>장자제 대협곡 유리다리 & 천문산 에스컬레이터</h3>
+            <p class="desc">공중에 붕 떠 있는 투명 유리 다리 위를 걷는 심장 쫄깃한 액티비티! 산을 통째로 관통하는 세계 최장 길이의 지하 에스컬레이터를 타는 대륙 스케일 볼거리 보유.</p>
+        </div>
+    </div>
+
+    <!-- 💡 Option 5. 베이징 + 낙양 -->
+    <div id="opt5" class="tab-content">
+        <div class="intro-card">
+            <p>🐉 <strong>한줄요약:</strong> 웅장함에 압도되는 고대 문명과 황실의 멋, 그리고 트렌디한 대형 예술구가 만난 정통 코스!</p>
+        </div>
+        <div class="deco-banner">🐉🏯🎨</div>
+
+        <div class="spot-card">
+            <div class="tag-row"><span class="badge bg-hot">예술가들의 힙플레이스</span></div>
+            <h3>베이징 798 예술구</h3>
+            <p class="desc">방치된 공장지대를 초힙한 갤러리와 디자인 숍으로 개조한 공간. 유니크한 마스킹 테이프, 일러스트 엽서, 소품샵들이 널려 있어 다꾸 수집가들의 심장을 저격함.</p>
+        </div>
+        <div class="spot-card">
+            <div class="tag-row"><span class="badge bg-otaku">마도조사/천관사복 풍경</span><span class="badge bg-act">야경 끝판왕</span></div>
+            <h3>낙양(뤄양) 용문석굴 야간 개장</h3>
+            <p class="desc"><마도조사> 분위기가 뿜어져 나오는 거대한 암벽 속 수천 개의 불상들. 밤이 되면 석굴 전체에 신비로운 은하수 같은 조명이 켜지며, 배를 타고 강 위에서 바라보는 풍경이 비현실적으로 아름다움.</p>
         </div>
     </div>
 
